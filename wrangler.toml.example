@@ -1,0 +1,19 @@
+name = "google-drive-index"
+main = "dist/worker.js"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_dir = "src"
+
+# Module syntax - Thêm environment variables vào đây
+[vars]
+CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID"
+CLIENT_SECRET = "YOUR_GOOGLE_CLIENT_SECRET" 
+REFRESH_TOKEN = "YOUR_GOOGLE_REFRESH_TOKEN"
+FOLDER_ID = "YOUR_MAIN_FOLDER_ID"
+# Thêm các folder khác nếu cần:
+# FOLDER_ID_MOVIES = "YOUR_MOVIES_FOLDER_ID"
+# FOLDER_ID_MUSIC = "YOUR_MUSIC_FOLDER_ID"
+# FOLDER_ID_DOCS = "YOUR_DOCS_FOLDER_ID" 

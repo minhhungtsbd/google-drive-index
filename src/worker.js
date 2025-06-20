@@ -289,21 +289,25 @@ export default {
             hour: "2-digit",
             minute: "2-digit"
           });
+          
+          // Tạo URL download: HOME dùng root URL, folder khác dùng /folder/NAME/
+          const downloadUrl = currentFolder === 'HOME' ? `/${file.name}` : `/folder/${currentFolder}/${file.name}`;
+          
           return `
           <tr data-filename="${file.name}" data-size="${file.size || 0}" data-date="${file.modifiedTime}">
             <td class="file-name-cell">
               <div class="file-name-content">
-                ${icon} <a href="/folder/${currentFolder}/${file.name}" class="file-link ms-2">${file.name}</a>
+                ${icon} <a href="${downloadUrl}" class="file-link ms-2">${file.name}</a>
               </div>
             </td>
             <td class="d-none d-md-table-cell text-nowrap">${size}</td>
             <td class="d-none d-lg-table-cell text-nowrap">${date}</td>
             <td>
               <div class="d-flex flex-wrap gap-1 justify-content-end">
-                <button onclick="copyLink('/folder/${currentFolder}/${file.name}')" class="btn btn-outline-secondary btn-sm-custom" title="Sao chép liên kết">
+                <button onclick="copyLink('${downloadUrl}')" class="btn btn-outline-secondary btn-sm-custom" title="Sao chép liên kết">
                   <i class="fas fa-copy"></i><span class="d-none d-sm-inline ms-1">Copy</span>
                 </button>
-                <a href="/folder/${currentFolder}/${file.name}" class="btn btn-outline-primary btn-sm-custom" title="Tải xuống" download>
+                <a href="${downloadUrl}" class="btn btn-outline-primary btn-sm-custom" title="Tải xuống" download>
                   <i class="fas fa-download"></i><span class="d-none d-sm-inline ms-1">Download</span>
                 </a>
                 ${getPreviewButton(file.mimeType, file.id)}
